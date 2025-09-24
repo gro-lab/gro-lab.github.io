@@ -1,48 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>404 - Page Not Found</title>
-    <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-    <div class="error-container">
-        <div class="error-content">
-            <h1>404</h1>
-            <h2>
-                <span lang="en">Page Not Found</span>
-                <span lang="ro" style="display: none;">Pagină Negăsită</span>
-            </h2>
-            <p>
-                <span lang="en">The page you're looking for doesn't exist.</span>
-                <span lang="ro" style="display: none;">Pagina pe care o căutați nu există.</span>
-            </p>
-            <a href="/" class="back-home">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-                </svg>
-                <span lang="en">Back to Home</span>
-                <span lang="ro" style="display: none;">Înapoi Acasă</span>
-            </a>
-        </div>
-    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>404 - Pagină Negăsită | Consiliere Online</title>
+    <meta name="description" content="Pagina căutată nu există. Navigați înapoi la serviciile de consiliere online și dezvoltare personală cu Răzvan Mischie.">
     
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./styles.min.css" as="style">
+    <link rel="preload" href="./logo.svg" as="image">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles.min.css">
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
+</head>
+
+<body class="error-page">
+    <!-- SVG Background (same as homepage) -->
+    <div id="svgBackground">
+        <!-- You can add your existing SVG background here if needed -->
+    </div>
+
+    <!-- Navigation (same structure as homepage) -->
+    <nav role="navigation" aria-label="Navigare principală">
+        <div class="nav-container">
+            <!-- Brand/Logo Section -->
+            <div class="nav-brand">
+                <a href="https://consiliereonline.com" class="brand-link" aria-label="Consiliere Online - Acasă">
+                    <img src="./logo.svg" alt="Răzvan Mischie Consiliere Online Logo" class="brand-logo">
+                    <span class="brand-text">
+                        <span lang="ro">Răzvan Mischie</span>
+                        <span lang="en">Răzvan Mischie</span>
+                    </span>
+                </a>
+            </div>
+
+            <button class="mobile-menu-toggle" aria-label="Meniu mobil" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="https://consiliereonline.com/#hero" class="nav-link" data-en="Home" data-ro="Acasă">Acasă</a></li>
+                <li><a href="https://consiliereonline.com/#about" class="nav-link" data-en="About me" data-ro="Despre mine">Despre mine</a></li>
+                <li><a href="https://consiliereonline.com/#services" class="nav-link" data-en="Services" data-ro="Servicii">Servicii</a></li>
+                <li><a href="https://consiliereonline.com/#online-event" class="nav-link" data-en="Events" data-ro="Evenimente">Evenimente</a></li>
+                <li><a href="https://consiliereonline.com/#faq" class="nav-link" data-en="FAQ" data-ro="Întrebări">Întrebări</a></li>
+                <li><a href="https://consiliereonline.com/#contact" class="nav-link" data-en="Contact" data-ro="Contact">Contact</a></li>
+            </ul>
+            
+            <div class="language-toggle">
+                <button class="lang-btn active" data-lang="ro" aria-label="Română">RO</button>
+                <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main 404 Content -->
+    <main class="error-main">
+        <div class="error-container" style="text-align: center; margin: 30vh 0">
+            <div class="error-content">
+                <!-- 404 Number -->
+                <div class="error-number">
+                    <span>4</span>
+                    <span class="error-zero">0</span>
+                    <span>4</span>
+                </div>
+
+                <!-- Error Message -->
+                <h1 class="error-title">
+                    <span lang="ro">Pagină Negăsită</span>
+                    <span lang="en">Page Not Found</span>
+                </h1>
+
+                <p class="error-description">
+                    <span lang="ro">
+                        Ne pare rău, pagina pe care o căutați nu există sau a fost mutată. 
+                        Vă invităm să navigați către una dintre secțiunile noastre principale 
+                        pentru a găsi ceea ce căutați.
+                    </span>
+                    <span lang="en">
+                        Sorry, the page you're looking for doesn't exist or has been moved. 
+                        We invite you to navigate to one of our main sections 
+                        to find what you're looking for.
+                    </span>
+                </p>
+
+                
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript for language switching and navigation -->
     <script>
-        // Lightweight language detection for 404 page
+        // Language detection and switching (reusing existing logic)
         (function() {
+            const languageToggle = document.querySelector('.language-toggle');
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            // Language switching
+            function switchLanguage(lang) {
+                document.body.className = lang === 'ro' ? 'lang-ro error-page' : 'error-page';
+                
+                // Update active button
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+                });
+                
+                // Save preference
+                try {
+                    localStorage.setItem('language', lang);
+                } catch (e) {
+                    console.warn('localStorage not available');
+                }
+            }
+            
+            // Initialize language
             try {
                 const savedLanguage = localStorage.getItem('language');
                 const browserLanguage = navigator.language.toLowerCase();
-                
-                if (savedLanguage === 'ro' || (!savedLanguage && browserLanguage.startsWith('ro'))) {
-                    document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = 'none');
-                    document.querySelectorAll('[lang="ro"]').forEach(el => el.style.display = 'block');
-                }
+                const defaultLanguage = savedLanguage || (browserLanguage.startsWith('ro') ? 'ro' : 'en');
+                switchLanguage(defaultLanguage);
             } catch (e) {
-                // localStorage not available, default to English
-                console.warn('Language detection failed, using default');
+                switchLanguage('ro'); // Default fallback
             }
+            
+            // Language button event listeners
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    switchLanguage(btn.getAttribute('data-lang'));
+                });
+            });
+            
+            // Mobile menu toggle
+            if (mobileMenuToggle && navMenu) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+                    mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+                    navMenu.classList.toggle('nav-menu-open', !isExpanded);
+                    mobileMenuToggle.classList.toggle('active', !isExpanded);
+                });
+            }
+
+            // Simple fade-in animation
+            setTimeout(() => {
+                document.querySelector('.error-content').classList.add('fade-in');
+            }, 100);
         })();
     </script>
 </body>

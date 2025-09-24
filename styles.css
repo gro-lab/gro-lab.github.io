@@ -2731,3 +2731,351 @@ body:not(.lang-ro) li[lang="en"] {
             padding: 0.75rem;
         }
     }
+
+    /* Stabilește dimensiuni fixe pentru imagini și elemente importante */
+.brand-logo {
+    width: 70px;
+    height: 70px;
+    aspect-ratio: 1/1;
+}
+
+.carousel-slide {
+    min-height: 300px;
+    aspect-ratio: 4/3;
+}
+
+/* Preîncărcă fonturile pentru a evita FOUT */
+@font-face {
+    font-family: 'Inter';
+    font-display: swap; /* Afișează text imediat cu font de rezervă */
+    src: local('Inter'), url('./fonts/inter.woff2') format('woff2');
+}
+
+/* Rezervă spațiu pentru elementele care se încarcă dinamic */
+.hero-title {
+    min-height: 120px; /* Previne salt când se încarcă textul */
+}
+
+nav {
+    height: 74px; /* Înălțime fixă pentru navbar */
+}
+
+/* ===== 404 ERROR PAGE STYLES ===== */
+
+/* Error page body adjustments */
+body.error-page {
+    padding-top: 80px; /* Account for fixed navigation */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.error-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    min-height: calc(100vh - 80px);
+}
+
+.error-container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.error-content.fade-in {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Large 404 number display */
+.error-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: var(--spacing-lg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.error-number span {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 300;
+    color: var(--primary-color);
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.error-zero {
+    position: relative;
+    display: inline-block;
+}
+
+.error-zero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+/* Error title and description */
+.error-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 300;
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.error-description {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Action buttons */
+.error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.error-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 2px solid transparent;
+    min-width: 160px;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.error-btn-primary {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.error-btn-primary:hover {
+    background: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.error-btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.error-btn-secondary:hover {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.error-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Helpful links section */
+.error-links {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.error-links-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.error-links-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+
+.error-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(0,0,0,0.05);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.error-link:hover {
+    background: rgba(0,0,0,0.1);
+    color: var(--primary-color);
+    border-color: rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+/* Language visibility for error page */
+body.error-page.lang-ro [lang="en"],
+body.error-page:not(.lang-ro) [lang="ro"] {
+    display: none !important;
+}
+
+body.error-page.lang-ro span[lang="ro"],
+body.error-page.lang-ro p[lang="ro"],
+body.error-page:not(.lang-ro) span[lang="en"],
+body.error-page:not(.lang-ro) p[lang="en"] {
+    display: inline !important;
+}
+
+/* ===== RESPONSIVE DESIGN FOR 404 PAGE ===== */
+
+@media (max-width: 768px) {
+    body.error-page {
+        padding-top: 70px;
+    }
+    
+    .error-main {
+        padding: var(--spacing-lg) var(--spacing-md);
+        min-height: calc(100vh - 70px);
+    }
+    
+    .error-number span {
+        font-size: clamp(3rem, 15vw, 6rem);
+    }
+    
+    .error-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .error-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .error-links-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .error-link {
+        width: fit-content;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-description {
+        font-size: 1rem;
+    }
+    
+    .error-number {
+        gap: 0.25rem;
+    }
+    
+    .error-actions {
+        gap: var(--spacing-sm);
+    }
+    
+    .error-btn {
+        min-width: 140px;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* Animation keyframes (if not already present) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .error-container,
+    .error-content,
+    .error-btn,
+    .error-link {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .error-container {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .error-btn-primary {
+        background: #000;
+        color: #fff;
+        border: 2px solid #000;
+    }
+    
+    .error-btn-secondary {
+        border-color: #000;
+        color: #000;
+    }
+    
+    .error-link {
+        border-color: #000;
+        background: transparent;
+    }
+}
+
+/* Print styles for 404 page */
+@media print {
+    .error-main {
+        min-height: auto;
+    }
+    
+    .error-number span {
+        font-size: 4rem;
+        color: #000;
+        text-shadow: none;
+    }
+    
+    .error-btn,
+    .error-link {
+        background: transparent !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+    }
+}
