@@ -7,11 +7,11 @@ Sitemap: https://consiliereonline.com/sitemap.xml
 # ===== IMAGE FIXES =====
 # Explicitly allow event images for all crawlers
 User-agent: *
-Allow: /consiliere-online-razvan-mischie-event-1.jpg
-Allow: /consiliere-online-razvan-mischie-event-2.jpg
-Allow: /consiliere-online-razvan-mischie-event-3.jpg
-Allow: /consiliere-online-razvan-mischie-event-4.jpg
-Allow: /consiliere-online-razvan-mischie-event-5.jpg
+Allow: /consiliere-online-razvan-mischie-event-1.webp
+Allow: /consiliere-online-razvan-mischie-event-2.webp
+Allow: /consiliere-online-razvan-mischie-event-3.webp
+Allow: /consiliere-online-razvan-mischie-event-4.webp
+Allow: /consiliere-online-razvan-mischie-event-5.webp
 Allow: /icons/
 Allow: /images/
 
