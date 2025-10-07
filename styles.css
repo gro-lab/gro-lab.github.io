@@ -3079,3 +3079,8 @@ body.error-page:not(.lang-ro) p[lang="en"] {
         border: 1px solid #000 !important;
     }
 }
+
+
+#event1, #event2, #event3, #event4, #event5 {
+    width: 100%;
+}
