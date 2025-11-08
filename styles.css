@@ -919,7 +919,6 @@ section {
 
 /* Hero Section - Enhanced */
 #hero {
-    background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
     position: relative;
     overflow: hidden;
 }
@@ -3083,4 +3082,12 @@ body.error-page:not(.lang-ro) p[lang="en"] {
 
 #event1, #event2, #event3, #event4, #event5 {
     width: 100%;
+}
+
+#about-picture {
+    background-image: url("./razvan-mischie-consilier-dezvoltare-personala-online.jpeg");
+    background-size: cover;
+    width: 300px;
+    height: 300px; 
+    display: inline-block;
 }
